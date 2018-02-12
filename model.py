@@ -34,4 +34,4 @@ model.add(Dense(1, kernel_initializer='normal'))
 model.compile(optimizer='adam', loss='mean_squared_error')
 model.summary()
 
-model.save('model_more0.h5')
+model.save('model0.h5')

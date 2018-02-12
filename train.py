@@ -35,9 +35,9 @@ def main(_):
     print(X_train.shape, y_train.shape)
 
     for epoch in range(0,10):
-        model = load_model('model_more'+str(epoch)+'.h5')
+        model = load_model('model'+str(epoch)+'.h5')
         model.fit(X_train,y_train,batch_size=100, epochs=1,validation_split=0.1, shuffle=True, callbacks=None)
-        model.save('model_more'+str(epoch+1)+'.h5')
+        model.save('model'+str(epoch+1)+'.h5')
 
 # parses flags and calls the `main` function above
 if __name__ == '__main__':
