@@ -35,20 +35,29 @@ Open the car simulator, in the training mode, specify the directory to save the 
 
 You can use the [Sample driving data](https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip) to save time collecting the data yourself, as a start. 
 
+### Create the Model
+An 11 layer convelutionary neural network is build in [`model.py`](./model.py). You will want to first build the model before training it by
+
+```sh
+python model.py
+```
+The architecture of the model is designed with some modifications to the [Nvidia CNN architecture](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf). 
+
 ### Train the Model
-A convelutionary neural network is build in `train_cnn.py`. The input of the neural network is the image flow, the output is the steering angle. This is a regression problem. In the tensorflow environment, you can kick off the training by 
+The input of the neural network is the image flow, the output is the steering angle. This is a regression problem. In the tensorflow environment, you can kick off the training by 
+
 ```python
-python train_cnn.py
+python train.py
 ```
 
-The path to the data and path to save the `h5` model is hard-coded in the `train_cnn.py` script. You will want to modify these values for your own training. 
+The path to the data and path to save the `h5` model is hard-coded in the [`train.py`](./train.py). You will want to modify these values for your own training. The script is going to load the predefined `model0.h5`. Models of all epochs will be saved. 
 
-The [Nvidia CNN architecture](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf) is used in this training script. 
 
 ### Autonomous Driving
 
-Usage of `drive.py` requires you have saved the trained model as an h5 file, i.e. `model.h5`. See the [Keras documentation](https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model) for how to create this file using the following command:
-```sh
+Usage of `drive.py` requires you have saved the trained model as an h5 file, i.e. `model.h5`. See the [Keras documentation](https://keras.io/getting-started/faq/#how-can-i-save-a-keras-model) for how to create this file using the following command in Python:
+
+```python
 model.save(filepath)
 ```
 
@@ -61,6 +70,8 @@ python drive.py model.h5
 The above command will load the trained model and use the model to make predictions on individual images in real-time and send the predicted angle back to the server via a websocket connection.
 
 Note: There is known local system's setting issue with replacing "," with "." when using drive.py. When this happens it can make predicted steering values clipped to max/min values. If this occurs, a known fix for this is to add "export LANG=en_US.utf8" to the bashrc file.
+
+Then, you can launch the car simulator you've donwloaded and run the car in the autonomous mode. 
 
 ### Saving a video of the autonomous agent (optional)
 
