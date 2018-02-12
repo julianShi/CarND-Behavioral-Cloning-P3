@@ -103,22 +103,33 @@ Non-trainable params: 6
 After training on 5625 samples for 5 epochs, the vehicle can make the correct steering in case of curves on the track, though still fails out of the track in case of large curve and illusive landmarks. Then I decide to trim the unnecessary part of the model, and increase the complexity of the model for generalization. 
 
 #### Improvement in generality
-Several driving senario were collected, including driving in different tracks and driving in inverted directions to increase the generality of the training data. 
+Several driving senario were collected, including driving in different tracks and driving in inverse directions to increase the generality of the training data. 
 
 #### Improvement in preprocessing
 As we've observed, the three cameras on the front of the vehicle, including the center, left and right cameras, all records the track information. Therefore, we keep only the center camera for data feedign. 
 
-![Center Camera](./images/center_2018_02_11_22_51_15_946.jpg "Center Camera")
-![Left Camera](./images/left_2018_02_11_22_51_15_946.jpg "Left Camera")
-![Right Camera](./images/right_2018_02_11_22_51_15_946.jpg "Right Camera")
+|![Center Camera](./images/center_2018_02_11_22_51_15_946.jpg "Center Camera")|
+|:--:| 
+| Center Camera|
+
+|![Left Camera](./images/left_2018_02_11_22_51_15_946.jpg "Left Camera")|
+|:--:| 
+|Left Camera|
+
+|![Right Camera](./images/right_2018_02_11_22_51_15_946.jpg "Right Camera")|
+|:--:| 
+|Right Camera|
 
 Second, we've found that part of the images are not relevant to the road information, like the sky on top and the car hood on bottom of the image. Therefore, I used a cropping layer on the neural network. 
 
 Also, as we've found, the RGB and grayscale images both yields the luminence, edge and shape information of the scene critical for driving feedback. We would like to introduce a Lambda layer in the model to convert the GVB images into one-channel grayscale image to reduce the number of model parameters. The image is also normalized in the Lambda layer. 
-![Gray Scale](./images/gray_scale.png "Gray Scale")
 
-#### Improvement in robustness 
-Two dropoff layers were introduced in the model. One is right after the fourth convolutional layer, the second is right before the fully connected layers. The drop off rates were set to 0.5 to increase the robustness of the model. 
+|![Gray Scale](./images/gray_scale.png "Gray Scale")|
+|:--:| 
+|Gray Scale|
+
+#### Prevent overfitting 
+Two dropoff layers were introduced in the model to prevent overfitting. One is right after the fourth convolutional layer [reference](https://arxiv.org/pdf/1512.00242.pdf), the second is right before the fully connected layers [reference](http://jmlr.org/papers/volume15/srivastava14a.old/srivastava14a.pdf). The drop off rates were set to 0.5 to increase the robustness of the model. 
 
 #### Final model architecture 
 
