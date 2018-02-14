@@ -116,4 +116,14 @@ python video.py run1 --fps 48
 Will run the video at 48 FPS. The default FPS is 60.
 
 
+## References
+
+* [https://www.youtube.com/watch?v=rpxZ87YFg0M](https://www.youtube.com/watch?v=rpxZ87YFg0M)
+* [https://www.youtube.com/watch?v=EaY5QiZwSP4](https://www.youtube.com/watch?v=EaY5QiZwSP4)
+* [http://selfdrivingcars.mit.edu/](http://selfdrivingcars.mit.edu/)
+* [http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf)
+* [http://jacobgil.github.io/deeplearning/vehicle-steering-angle-visualizations](http://jacobgil.github.io/deeplearning/vehicle-steering-angle-visualizations)
+* [http://medium.com/udacity/teaching-a-machine-to-steer-a-car-d73217f2492c](http://medium.com/udacity/teaching-a-machine-to-steer-a-car-d73217f2492c)
+* [http://chatbotslife.com/using-augmentation-to-mimic-human-driving-496b569760a9](http://chatbotslife.com/using-augmentation-to-mimic-human-driving-496b569760a9)
+* Michael A. Nielsen, *Neural Networks and Deep Learning*, Determination Press, 2015
 
